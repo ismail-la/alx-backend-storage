@@ -1,6 +1,3 @@
---SQL script that creates a table (called users) following these requirements:
---'id', 'email', 'name' and 'country' columns
-
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(255) NOT NULL UNIQUE,
