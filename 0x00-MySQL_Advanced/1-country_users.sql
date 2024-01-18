@@ -1,5 +1,5 @@
 --SQL script that creates a table (called users) following these requirements:
--- 'id', 'email', 'name' and 'country' columns.
+--'id', 'email', 'name' and 'country' columns.
 
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
