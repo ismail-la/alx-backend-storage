@@ -1,9 +1,9 @@
 --SQL script that creates a table (called users) following these requirements:
 --'id', 'email', 'name' and 'country' columns
-DROP TABLE IF EXISTS users;
-CREATE TABLE users (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(255) NOT NULL UNIQUE,
     name VARCHAR(255),
-    country CHAR(2) NOT NULL DEFAULT 'US' CHECK (country IN ('US', 'CO', 'TN'))
+    country ENUM('US', 'CO', 'TN') NOT NULL DEFAULT 'US'
 );
