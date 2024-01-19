@@ -1,8 +1,7 @@
 --SQL script creates a stored procedure named 'ComputeAverageScoreForUser' which takes in one parameter user_id.
 
-DELIMITER $$
-
 DROP PROCEDURE IF EXISTS ComputeAverageScoreForUser;
+DELIMITER $$
 CREATE PROCEDURE ComputeAverageScoreForUser (IN user_id INT)
 BEGIN
 	UPDATE users
@@ -11,4 +10,5 @@ BEGIN
 	WHERE id = user_id;
 
 END $$
+
 DELIMITER ;
