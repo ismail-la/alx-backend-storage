@@ -1,3 +1,5 @@
+-- SQL script creates a stored procedure named 'AddBonus' which takes in three parameters user_id, project_name and score.
+
 DELIMITER $$;
 CREATE PROCEDURE AddBonus(IN a_user_id INT, IN a_project_name VARCHAR(255), IN a_score INT )
 BEGIN
