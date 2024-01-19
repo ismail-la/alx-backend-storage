@@ -1,23 +1,22 @@
 --SQL script creates a stored procedure named 'ComputeAverageScoreForUser' which takes in one parameter user_id.
 
-DROP PROCEDURE IF EXISTS ComputeAverageScoreForUser;
-DELIMITER $$
-CREATE PROCEDURE ComputeAverageScoreForUser (user_id INT)
+DELIMITER //
+CREATE PROCEDURE ComputeAverageScoreForUser(
+    IN p_user_id INT
+)
 BEGIN
-    DECLARE total_score INT DEFAULT 0;
-    DECLARE projects_count INT DEFAULT 0;
+    DECLARE v_total_score FLOAT;
+    DECLARE v_total_projects INT;
 
-    SELECT SUM(score)
-        INTO total_score
-        FROM corrections
-        WHERE corrections.user_id = user_id;
-    SELECT COUNT(*)
-        INTO projects_count
-        FROM corrections
-        WHERE corrections.user_id = user_id;
+    -- Calculate the total score and total projects for the user
+    SELECT SUM(score), COUNT(DISTINCT project_id)
+    INTO v_total_score, v_total_projects
+    FROM corrections
+    WHERE user_id = p_user_id;
 
+    -- Update the average score for the user
     UPDATE users
-        SET users.average_score = IF(projects_count = 0, 0, total_score / projects_count)
-        WHERE users.id = user_id;
-END $$
+    SET average_score = IFNULL(v_total_score / NULLIF(v_total_projects, 0), 0)
+    WHERE id = p_user_id;
+END //
 DELIMITER ;
