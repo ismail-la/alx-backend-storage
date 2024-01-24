@@ -8,7 +8,7 @@ The IPs top must be sorted (like the example below)
 from pymongo import MongoClient
 
 
-def print_nginx_request_logs(nginx_collection):
+def print_nginx_logs(nginx_collection):
     '''Function that prints stats about Nginx request logs.
     '''
     print('{} logs'.format(nginx_collection.count_documents({})))
@@ -48,7 +48,7 @@ def print_ips_top(server_collection):
 def run():
 
     client = MongoClient('mongodb://127.0.0.1:27017')
-    print_nginx_request_logs(client.logs.nginx)
+    print_nginx_logs(client.logs.nginx)
     print_ips_top(client.logs.nginx)
 
 
