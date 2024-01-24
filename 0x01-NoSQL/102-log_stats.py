@@ -24,8 +24,7 @@ def print_nginx_request_logs(nginx_collection):
 
 
 def print_ips_top(server_collection):
-    '''Prints statistics about the top 10 HTTP IPs in a collection.
-    '''
+
     print('IPs:')
     request_logs = server_collection.aggregate(
         [
@@ -47,8 +46,7 @@ def print_ips_top(server_collection):
 
 
 def run():
-    '''Provides some stats about Nginx logs stored in MongoDB.
-    '''
+
     client = MongoClient('mongodb://127.0.0.1:27017')
     print_nginx_request_logs(client.logs.nginx)
     print_ips_top(client.logs.nginx)
