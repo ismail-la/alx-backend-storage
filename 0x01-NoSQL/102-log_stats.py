@@ -22,6 +22,7 @@ def print_nginx_request_logs(nginx_collection):
     ))
     print('{} status check'.format(status_count_checks))
 
+
 def print_ips_top(server_collection):
     '''Prints statistics about the top 10 HTTP IPs in a collection.
     '''
@@ -43,6 +44,7 @@ def print_ips_top(server_collection):
         ip = request_log['_id']
         ip_count_requests = request_log['totalRequests']
         print('\t{}: {}'.format(ip, ip_count_requests))
+
 
 def run():
     '''Provides some stats about Nginx logs stored in MongoDB.
